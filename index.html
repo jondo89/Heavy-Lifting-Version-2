@@ -1,0 +1,163 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CSV File Processing</title>
+
+    <!-- --------------------- -->
+    <!--        THEMES         -->
+    <!-- --------------------- -->
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Zabuto Calendar -->
+    <link href="js/zabutocalendar/zabuto_calendar.css" rel="stylesheet">
+    
+    <!-- --------------------- -->
+    <!--        THEMES         -->
+    <!-- --------------------- -->   
+
+    <!-- --------------------- -->
+    <!--        STYLES         -->
+    <!-- --------------------- -->   
+
+  </style>
+  <!-- --------------------- -->
+  <!--        STYLES         -->
+  <!-- --------------------- -->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      </head>
+      <body>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">Existing Data</div>
+                <div class="panel-body">
+                  <div id="my-calendar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">1. Select CSV files for Processing</div>
+                <div class="panel-body">
+
+
+                  <!-- File Button --> 
+                  <div class="form-group" style="text-align:center;padding-top:25px">
+                    <form action="demo_form.asp">
+                      <input type="file" name="img" multiple id="multiSelect">
+                    </form>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading">2. Select processing file</div>
+                <div class="panel-body">
+
+
+                  <!-- File Button --> 
+                  <div class="form-group" style="text-align:center;padding-top:25px">
+                    <form action="demo_form.asp">
+                      <input type="file" name="img" multiple id="multiSelect">
+                    </form>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="panel panel-default">
+                <div class="panel-heading">3. Loaded files</div>
+                <div class="panel-body">
+
+
+                  <table  class="table table-bordered" style="font-size:11px;padding:2px 2px 2px 2px;">
+                    <tr>
+
+                     <th>File Name </th>
+                     <th>Exisiting DataSet </th>
+                     <th>Reprocess </th>
+                     <th>Add Item</th>
+                     <th>Loaded Header </th>
+                     <th>Processesed</th>
+
+                   </tr>
+                   <tbody id="datedetail">
+                   </tbody>
+                 </table>
+
+
+               </div>
+             </div>
+           </div>
+
+            <div class="col-md-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">4. Download New Data file</div>
+                <div class="panel-body">
+
+
+
+               </div>
+             </div>
+           </div>
+
+         </div>
+       </div>
+
+     </body>
+
+     <!-- --------------------- -->
+     <!-- REQUIRED DEPENDANCIES -->
+     <!-- --------------------- -->
+
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="js/bootstrap.min.js"></script>
+     <!-- Zabuto Calendar -->
+     <script src="js/zabutocalendar/zabuto_calendar.js"></script>
+
+     <!-- --------------------- -->
+     <!-- REQUIRED DEPENDANCIES -->
+     <!-- --------------------- -->
+
+
+     <!-- --------------------- -->
+     <!--        Modules        -->
+     <!-- --------------------- -->
+
+
+     <!-- --------------------- -->
+     <!--        Modules        -->
+     <!-- --------------------- -->
+
+
+
+
+     <script type="text/javascript">
+      $(document).ready(function () {
+        $("#my-calendar").zabuto_calendar();
+      });
+
+    </script>
+
+    </html>
