@@ -13,7 +13,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Zabuto Calendar -->
-    <link href="js/zabutocalendar/zabuto_calendar.css" rel="stylesheet">
+    <link href="js\zabutocalendar/zabuto_calendar.css" rel="stylesheet">
     
     <!-- --------------------- -->
     <!--        THEMES         -->
@@ -39,67 +39,41 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-md-4">
+
+
+
+            <div class="col-md-12">
               <div class="panel panel-default">
-                <div class="panel-heading">Existing Data</div>
-                <div class="panel-body">
-                  <div id="my-calendar"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">1. Select CSV files for Processing</div>
-                <div class="panel-body">
+                <div class="panel-heading">Config File Settings</div>
+                <div class="panel-body" style="max-height:300px;overflow:auto"> 
 
-
-                  <!-- File Button --> 
-                  <div class="form-group" style="text-align:center;padding-top:25px">
-                    <form action="demo_form.asp">
-                      <input type="file" name="img" multiple id="multiSelect">
-                    </form>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">2. Select processing file</div>
-                <div class="panel-body">
-
-
-                  <!-- File Button --> 
-                  <div class="form-group" style="text-align:center;padding-top:25px">
-                    <form action="demo_form.asp">
-                      <input type="file" name="img" multiple id="multiSelect">
-                    </form>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-8">
-              <div class="panel panel-default">
-                <div class="panel-heading">3. Loaded files</div>
-                <div class="panel-body">
-
-
-                  <table  class="table table-bordered" style="font-size:11px;padding:2px 2px 2px 2px;">
-                    <tr>
-
-                     <th>File Name </th>
-                     <th>Exisiting DataSet </th>
-                     <th>Reprocess </th>
-                     <th>Add Item</th>
-                     <th>Loaded Header </th>
-                     <th>Processesed</th>
-
-                   </tr>
-                   <tbody id="datedetail">
+                  <table class="table table-bordered" style="font-size:9px">
+                    <thead>
+                      <tr>
+                        <th>State Name</th>
+                        <th>stateNumber</th>
+                        <th>tag</th>
+                        <th>greaterThan</th>
+                        <th>lessThan</th>
+                        <th>betweenlower</th>
+                        <th>betweenHigher</th>
+                        <th>notBetweenlower</th>
+                        <th>notBetweenHigher</th>
+                        <th>Bucket 1</th>
+                        <th>Bucket 2</th>
+                        <th>Bucket 3</th>
+                        <th>Bucket 4</th>
+                        <th>Bucket 5</th>
+                        <th>Bucket 6</th>
+                        <th>Bucket 7</th>
+                        <th>Bucket 8</th>
+                        <th>Bucket 9</th>
+                        <th>Bucket 10</th>
+                        <th>Bucket 11</th>
+                        <th>Bucket 12</th>
+                     </tr> 
+                   </thead>
+                   <tbody  id="configTable"> 
                    </tbody>
                  </table>
 
@@ -108,56 +82,325 @@
              </div>
            </div>
 
-            <div class="col-md-12">
+            <div class="col-md-4">
               <div class="panel panel-default">
-                <div class="panel-heading">4. Download New Data file</div>
+                <div class="panel-heading">Existing Data</div>
                 <div class="panel-body">
+                  <div id="my-calendar"></div>
+                </div>
+              </div>
+
+                  <table class="table table-bordered" >
+                    <thead>
+                      <tr>
+                       <th>Shift Start</th>
+                       <th>Shift End</th>
+                      </tr> 
+                   </thead>
+                   <tbody  id="shiftTable"> 
+                   </tbody>
+                 </table>
+
+            </div>
+           <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">1. Select CSV files for Processing</div>
+              <div class="panel-body">
+
+
+                <!-- File Button --> 
+                <div class="form-group" style="text-align:center;padding-top:25px">
+                  <form action="demo_form.asp">
+                    <input type="file" name="img" multiple id="multiSelect">
+                  </form>
+                </div>
+
+                <!-- START --> 
+                <div class="form-group">
+                  <div style="text-align:center">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-lg btn-primary" >Get Statistics</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-heading">Things to do</div>
+            <div class="panel-body">
+              <li>Check if there is an exsisting datafile.</li>
+              <li>Create exsiting data file if not availbile.</li>
+              <li>Load the existing Data file which has been processed.</li>
+              <li>Load the file that will be used to process.</li>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">4. Download New Data file</div>
+            <div class="panel-body">
 
 
 
-               </div>
-             </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">3. Loaded files</div>
+            <div class="panel-body">
+
+
+              <table  class="table table-bordered" style="font-size:11px;padding:2px 2px 2px 2px;">
+                <tr>
+
+                 <th>File Name </th>
+                 <th>Exisiting DataSet </th>
+                 <th>Reprocess </th>
+                 <th>Add Item</th>
+                 <th>Loaded Header </th>
+                 <th>Processesed</th>
+
+               </tr>
+               <tbody id="datedetail">
+               </tbody>
+             </table>
+
+
            </div>
-
          </div>
        </div>
 
-     </body>
+     </div>
+   </div>
 
-     <!-- --------------------- -->
-     <!-- REQUIRED DEPENDANCIES -->
-     <!-- --------------------- -->
+ </body>
 
-
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <!-- Include all compiled plugins (below), or include individual files as needed -->
-     <script src="js/bootstrap.min.js"></script>
-     <!-- Zabuto Calendar -->
-     <script src="js/zabutocalendar/zabuto_calendar.js"></script>
-
-     <!-- --------------------- -->
-     <!-- REQUIRED DEPENDANCIES -->
-     <!-- --------------------- -->
+ <!-- --------------------- -->
+ <!-- REQUIRED DEPENDANCIES -->
+ <!-- --------------------- -->
 
 
-     <!-- --------------------- -->
-     <!--        Modules        -->
-     <!-- --------------------- -->
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script src="js/bootstrap.min.js"></script>
+ <!-- Zabuto Calendar -->
+ <script src="js/zabutocalendar/zabuto_calendar.min.js"></script>
+ <!-- Papaparse Javascript -->    
+ <script src="js/papaparse/papaparse.js"></script>
+  <!-- Moment.js Javascript -->    
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+ <!-- --------------------- -->
+ <!-- REQUIRED DEPENDANCIES -->
+ <!-- --------------------- -->
 
 
-     <!-- --------------------- -->
-     <!--        Modules        -->
-     <!-- --------------------- -->
+ <!-- --------------------- -->
+ <!--        Modules        -->
+ <!-- --------------------- -->
+ <!-- csv stats -->    
+ <script src="js/csvstats/parser.js"></script>
+
+ <!-- --------------------- -->
+ <!--        Modules        -->
+ <!-- --------------------- -->
 
 
 
 
-     <script type="text/javascript">
-      $(document).ready(function () {
-        $("#my-calendar").zabuto_calendar();
-      });
+ <script type="text/javascript">
 
-    </script>
 
-    </html>
+///////////////////////////////////////
+////////    GLOBAL VARIABLES   ///////
+/////////////////////////////////////
+config = [];
+shifts = [];
+eventData=([])
+var inp
+fileProcessCount = 0;
+
+///////////////////////////////
+////////    SETTINGS   ///////
+/////////////////////////////
+$.ajaxSetup({
+//no cache  
+cache:false
+});
+
+
+/////////////////////////////////////
+////////    START CALENDAR   ///////
+///////////////////////////////////
+$(document).ready(function () {
+  $("#my-calendar").zabuto_calendar({
+    cell_border: true,
+    year: 2015,
+    month: 1,
+    today: true,
+    show_days: false,
+    weekstartson: 0,
+  });
+});
+
+
+/////////////////////////////////////////////
+//////// LOAD CONFIG FILE INTO MEMORY ///////
+/////////////////////////////////////////////
+$.ajax({
+  'async': true,
+  'global': false,
+  'url': "json/config.json",
+  'dataType': "json",
+  'success': function (data) {
+    config = data;
+    configTable();
+    shiftFile();
+  }
+});
+
+/////////////////////////////////////////////
+//////// LOAD SHIFTS FILE INTO MEMORY ///////
+/////////////////////////////////////////////
+function shiftFile(){
+  $.ajax({
+    'async': true,
+    'global': false,
+    'url': "json/shifts.json",
+    'dataType': "json",
+    'success': function (data) {
+      shifts = data;
+      shiftTable();
+    }
+  });
+}
+
+
+//////////////////////////////////////////////////
+//////// POPULATE THE CONFIG TABLE ON HTML ///////
+////////////////////////////////////////////////
+function shiftTable(){
+ html = ""
+ for (var i = 0; i < shifts.length; i++) {
+   html+= "<tr>"
+   for (var key in shifts[i]) {
+    html+= "<td>"
+    html+= shifts[i][key]
+    html+= "</td>"
+  }
+  html+= "</tr>"
+};
+$( "#shiftTable" ).append(html);
+};
+
+
+//////////////////////////////////////////////////
+//////// POPULATE THE CONFIG TABLE ON HTML ///////
+////////////////////////////////////////////////
+function configTable(){
+ html = ""
+ for (var i = 0; i < config.length; i++) {
+   html+= "<tr>"
+   for (var key in config[i]) {
+    html+= "<td>"
+    html+= config[i][key]
+    html+= "</td>"
+  }
+  html+= "</tr>"
+};
+$( "#configTable" ).append(html);
+};
+
+
+////////////////////////////
+// START PROCESSING STATS //
+////////////////////////////
+jQuery( "#singlebutton" ).click(function() {
+  fileProcessCount = 0;
+  console.log("Initialize")
+   inp = document.getElementById('multiSelect');
+
+      
+//Add True badge for selected elements.
+for (var i = 0; i < inp.files.length; ++i) {
+  var file = inp.files.item(i).name;
+  var fileObject = inp.files.item(i);
+  var file = file.replace(".csv", "");
+  //used to create the JSON file structure for this process.
+  createJSON(file)
+  for (var j = 0; j < eventData.length; j++) {
+    if (eventData[j]["date"]==file) {
+      eventData[j]["badge"]=true;
+    };
+  };
+}
+
+var eventDataNew=[]
+
+for (var j = 0; j < eventData.length; j++) {
+  if (eventData[j]["badge"]==true) {
+   eventDataNew.push(eventData[j])
+ };
+};
+
+eventData=eventDataNew
+//run the parser que function , sepereated onto new javascript file.
+parserQue(inp)
+});
+
+
+
+/////////////////////////////////////////////////////
+//           JSON FILE STRUCTURE CREATION         //
+///////////////////////////////////////////////////
+function createJSON(files){
+
+      var files = files.slice(0,4)
+            + "-"
+            + files.slice(4,6)
+            + "-"
+            + files.slice(6,8)
+
+
+  eventData.push({ 
+                    "date": files,
+                    "badge": true,
+                    "body": null,
+                    "footer": null,
+                    "classname": null,
+                    "loaded": true,
+                    "statsloaded": true,
+                    "title" : "This is loaded.",
+                    "shift1": [],
+                    "shift2": [],
+                    "shift3": [],
+                });
+ 
+
+ $("#my-calendar").empty();
+ 
+  $("#my-calendar").zabuto_calendar({
+      data: eventData,
+      cell_border: true,
+      year: 2015,
+      month: 1,
+      today: true,
+      show_days: false,
+      weekstartson: 0,
+});
+
+
+};
+
+
+
+</script>
+
+</html>
