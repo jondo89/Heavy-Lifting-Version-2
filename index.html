@@ -48,31 +48,7 @@
                 <div class="panel-body" style="max-height:300px;overflow:auto"> 
 
                   <table class="table table-bordered" style="font-size:9px">
-                    <thead>
-                      <tr>
-                        <th>State Name</th>
-                        <th>stateNumber</th>
-                        <th>tag</th>
-                        <th>greaterThan</th>
-                        <th>lessThan</th>
-                        <th>betweenlower</th>
-                        <th>betweenHigher</th>
-                        <th>notBetweenlower</th>
-                        <th>notBetweenHigher</th>
-                        <th>Bucket 1</th>
-                        <th>Bucket 2</th>
-                        <th>Bucket 3</th>
-                        <th>Bucket 4</th>
-                        <th>Bucket 5</th>
-                        <th>Bucket 6</th>
-                        <th>Bucket 7</th>
-                        <th>Bucket 8</th>
-                        <th>Bucket 9</th>
-                        <th>Bucket 10</th>
-                        <th>Bucket 11</th>
-                        <th>Bucket 12</th>
-                     </tr> 
-                   </thead>
+ 
                    <tbody  id="configTable"> 
                    </tbody>
                  </table>
@@ -83,26 +59,7 @@
            </div>
 
             <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">Existing Data</div>
-                <div class="panel-body">
-                  <div id="my-calendar"></div>
-                </div>
-              </div>
 
-                  <table class="table table-bordered" >
-                    <thead>
-                      <tr>
-                       <th>Shift Start</th>
-                       <th>Shift End</th>
-                      </tr> 
-                   </thead>
-                   <tbody  id="shiftTable"> 
-                   </tbody>
-                 </table>
-
-            </div>
-           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">1. Select CSV files for Processing</div>
               <div class="panel-body">
@@ -121,60 +78,73 @@
                     <button id="singlebutton" name="singlebutton" class="btn btn-lg btn-primary" >Get Statistics</button>
                   </div>
                 </div>
+
+
+
+
               </div>
 
             </div>
-          </div>
+            
+              <div class="panel panel-default">
+                <div class="panel-heading">Existing Data</div>
+                <div class="panel-body">
+                  <div id="my-calendar"></div>
+                </div>
+              </div>
 
+                  <table class="table table-bordered" >
+                    <thead>
+                      <tr>
+                       <th>Shift Start</th>
+                       <th>Shift End</th>
+                      </tr> 
+                   </thead>
+                   <tbody  id="shiftTable"> 
+                   </tbody>
+                 </table>
 
-        </div>
+            
+           
 
-
-        <div class="col-md-8">
-          <div class="panel panel-default">
-            <div class="panel-heading">Things to do</div>
-            <div class="panel-body">
-              <li>Check if there is an exsisting datafile.</li>
-              <li>Create exsiting data file if not availbile.</li>
-              <li>Load the existing Data file which has been processed.</li>
-              <li>Load the file that will be used to process.</li>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">4. Download New Data file</div>
-            <div class="panel-body">
-
-
-
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">3. Loaded files</div>
-            <div class="panel-body">
-
-
-              <table  class="table table-bordered" style="font-size:11px;padding:2px 2px 2px 2px;">
-                <tr>
-
-                 <th>File Name </th>
-                 <th>Exisiting DataSet </th>
-                 <th>Reprocess </th>
-                 <th>Add Item</th>
-                 <th>Loaded Header </th>
-                 <th>Processesed</th>
-
-               </tr>
-               <tbody id="datedetail">
-               </tbody>
-             </table>
-
-
-           </div>
-         </div>
        </div>
+
+
+<div class="col-md-8">
+  <h3>Shift 1</h3>
+ <table class="table table-bordered" >
+  <thead>
+    <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+    <td>11</td>
+    <td>12</td>
+    <td>13</td>
+    <td>14</td>
+    </tr>
+  </thead>
+  <tbody id="shift1Table">
+    
+  </tbody>
+</table> 
+</div>
+
+
+
+        </div>
+
+
+ 
+
+ 
 
      </div>
    </div>
@@ -227,6 +197,7 @@ eventData=([])
 var inp
 fileProcessCount = 0;
 
+
 ///////////////////////////////
 ////////    SETTINGS   ///////
 /////////////////////////////
@@ -265,6 +236,7 @@ $.ajax({
     shiftFile();
   }
 });
+
 
 /////////////////////////////////////////////
 //////// LOAD SHIFTS FILE INTO MEMORY ///////
@@ -356,7 +328,6 @@ parserQue(inp)
 });
 
 
-
 /////////////////////////////////////////////////////
 //           JSON FILE STRUCTURE CREATION         //
 ///////////////////////////////////////////////////
@@ -368,7 +339,15 @@ function createJSON(files){
             + "-"
             + files.slice(6,8)
 
-
+ tempVar =[]
+ tempVar1 =[]
+ tempVar2 =[]
+for (var i = 0; i < 196; i++) {
+  tempVar.push(0)
+  tempVar1.push(0)
+  tempVar2.push(0)
+ }; 
+ 
   eventData.push({ 
                     "date": files,
                     "badge": true,
@@ -378,12 +357,13 @@ function createJSON(files){
                     "loaded": true,
                     "statsloaded": true,
                     "title" : "This is loaded.",
-                    "shift1": [],
-                    "shift2": [],
-                    "shift3": [],
+                    "shift1": tempVar,
+                    "shift2": tempVar1,
+                    "shift3": tempVar2
                 });
- 
 
+
+ //console.log(eventData)
  $("#my-calendar").empty();
  
   $("#my-calendar").zabuto_calendar({
@@ -398,7 +378,6 @@ function createJSON(files){
 
 
 };
-
 
 
 </script>
