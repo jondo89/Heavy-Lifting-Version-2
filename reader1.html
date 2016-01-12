@@ -237,27 +237,8 @@
 <script type="text/javascript">
 
 
-///////////////////////////////////////
-////////    GLOBAL VARIABLES   ///////
-/////////////////////////////////////
-config = [];
-shifts = [];
-P200 = [85,86,87,88,89,90,119,147,161,175]
-T300 = [43,44,45,57,58,59,71,72,99,100,102,103,113,114,115,116,117,118,120,127,128,130,131,133,141,142,143,144,145,146,148,149,150,155,156,157,158,159,160,162,163,164,169,170,172,173,177,183,184,186,187,191,193,194]
-eventData=([])
-var inp
-fileProcessCount = 0;
-
-
- //array modifier to make the P200 and T300 correct
-for (var i = 0; i < P200.length; i++) {
-  P200[i] = P200[i]-1;
-};
  
-for (var i = 0; i < T300.length; i++) {
-  T300[i] = T300[i]-1;
-};
- 
+
 
 ///////////////////////////////
 ////////    SETTINGS   ///////
@@ -268,19 +249,7 @@ cache:false
 });
 
 
-/////////////////////////////////////
-////////    START CALENDAR   ///////
-///////////////////////////////////
-$(document).ready(function () {
-  $("#my-calendar").zabuto_calendar({
-    cell_border: true,
-    year: 2015,
-    month: 1,
-    today: true,
-    show_days: false,
-    weekstartson: 0,
-  });
-});
+ 
 
 
 /////////////////////////////////////////////
@@ -289,158 +258,104 @@ $(document).ready(function () {
 $.ajax({
   'async': true,
   'global': false,
-  'url': "json/config.json",
+  'url': "json/dec.json",
   'dataType': "json",
   'success': function (data) {
     config = data;
-    configTable();
-    shiftFile();
-  }
-});
+     
 
 
-/////////////////////////////////////////////
-//////// LOAD SHIFTS FILE INTO MEMORY ///////
-/////////////////////////////////////////////
-function shiftFile(){
-  $.ajax({
-    'async': true,
-    'global': false,
-    'url': "json/shifts.json",
-    'dataType': "json",
-    'success': function (data) {
-      shifts = data;
-      shiftTable();
-    }
-  });
-}
+
+  for (var i = 0; i < config.length; i++) {
+    html = ""
+    html = "<tr>"
+    html += "<td>"
+    html += config[i]["date"]
+    html += "</td>"
+
+    console.log(config[i])
+    for (var j = 0; j < config[i]["shiftHist"].length; j++) {
+
+        switch ( true) {
+          case (j == 0):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ; 
+
+        case (j == 1):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ;  
+
+          case (j == 2):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ;
+//tonnage
+          case (j == 3):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ; 
+//P200
+          case (j == 4):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ;           
+//T300
+          case (j == 5):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ;        
+//Tonnage LOS
+          case (j == 6):
+            for (var k = 0; k < config[i]["shiftHist"][j].length; k++) {
+            html += "<td>"
+            html +=config[i]["shiftHist"][j][k]
+            html += "</td>"
+            };
+          break ;                
+        }
 
 
-//////////////////////////////////////////////////
-//////// POPULATE THE CONFIG TABLE ON HTML ///////
-////////////////////////////////////////////////
-function shiftTable(){
- html = ""
- for (var i = 0; i < shifts.length; i++) {
-   html+= "<tr>"
-   for (var key in shifts[i]) {
-    html+= "<td>"
-    html+= shifts[i][key]
-    html+= "</td>"
-  }
-  html+= "</tr>"
-};
-$( "#shiftTable" ).append(html);
-};
 
-
-//////////////////////////////////////////////////
-//////// POPULATE THE CONFIG TABLE ON HTML ///////
-////////////////////////////////////////////////
-function configTable(){
- html = ""
- for (var i = 0; i < config.length; i++) {
-   html+= "<tr>"
-   for (var key in config[i]) {
-    html+= "<td>"
-    html+= config[i][key]
-    html+= "</td>"
-  }
-  html+= "</tr>"
-};
-$( "#configTable" ).append(html);
-};
-
-
-////////////////////////////
-// START PROCESSING STATS //
-////////////////////////////
-jQuery( "#singlebutton" ).click(function() {
-  fileProcessCount = 0;
-  console.log("Initialize")
-  inp = document.getElementById('multiSelect');
-
-
-//Add True badge for selected elements.
-for (var i = 0; i < inp.files.length; ++i) {
-  var file = inp.files.item(i).name;
-  var fileObject = inp.files.item(i);
-  var file = file.replace(".csv", "");
-  //used to create the JSON file structure for this process.
-  createJSON(file)
-  for (var j = 0; j < eventData.length; j++) {
-    if (eventData[j]["date"]==file) {
-      eventData[j]["badge"]=true;
     };
+        html += "</tr>"
+    $("#configTable").append(html)
   };
-}
 
-var eventDataNew=[]
 
-for (var j = 0; j < eventData.length; j++) {
-  if (eventData[j]["badge"]==true) {
-   eventDataNew.push(eventData[j])
- };
-};
 
-eventData=eventDataNew
-//run the parser que function , sepereated onto new javascript file.
-parserQue(inp)
+  }
 });
 
 
-/////////////////////////////////////////////////////
-//           JSON FILE STRUCTURE CREATION         //
-///////////////////////////////////////////////////
-function createJSON(files){
-
-  var files = files.slice(0,4)
-  + "-"
-  + files.slice(4,6)
-  + "-"
-  + files.slice(6,8)
-  //shiftHist=
-  tempVar =[]
-  tempVar1 =[]
-  tempVar2 =[]
-  for (var i = 0; i < 196; i++) {
-    tempVar.push(0)
-    tempVar1.push(0)
-    tempVar2.push(0)
-  }; 
-
-  eventData.push({ 
-    "date": files,
-    "badge": true,
-    "body": null,
-    "footer": null,
-    "classname": null,
-    "loaded": true,
-    "statsloaded": true,
-    "title" : "This is loaded.",
-    "shift1": tempVar,
-    "shift2": tempVar1,
-    "shift3": tempVar2,
-    //Histogram morning , Histogram day , Histogram night , Shift count tonnage , Shift count P200 , Shift count T300,Shift count tonnage LOS
-    "shiftHist":[[0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
-  });
-
-
- //console.log(eventData)
- $("#my-calendar").empty();
  
- $("#my-calendar").zabuto_calendar({
-  data: eventData,
-  cell_border: true,
-  year: 2015,
-  month: 1,
-  today: true,
-  show_days: false,
-  weekstartson: 0,
-});
 
 
-};
+ 
+ 
+
+ 
+
+ 
 
 
 </script>
